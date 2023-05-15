@@ -1,5 +1,5 @@
 String b= "vardhan"
-if (b == "vardhan" && params.zuulRef != ""){
+if (b == "vardhan" && ${zuulRef} != ""){
    println("executing inside if")  
    }
    else{
