@@ -1,7 +1,7 @@
 String b= "vardhan"
-if (b == "vardhan" && params.zuulRef.isEmpty() == true){
-   println("The variable is empty")  
+if (b == "vardhan" && params.zuulRef.isEmpty() == false){
+   println("executing inside if")  
    }
    else{
-      println("The varible is  empty")
+      println("executing else")
    }
