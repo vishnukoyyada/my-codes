@@ -5,11 +5,11 @@ pipeline {
         stage('Print Hello World') {
             steps {
                 script {
-                    echo "Hello, World!"
+                    println("Hello, World!")
                 }
             }
         }
-        
+
     }
     
     // Additional pipeline configuration
