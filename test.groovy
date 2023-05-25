@@ -3,9 +3,11 @@ pipeline {
     
     stages {
         try {
+            stage('stage 1')
         stage('stage 1') {
             steps {
                 script {
+                    
                     println("stage 1")
                 }
             }
