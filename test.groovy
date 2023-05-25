@@ -11,7 +11,9 @@ pipeline {
         }
         stage('stage 2'){
             steps{
+                script{
                 println("stage 2")
+                }
             }
         }
 
