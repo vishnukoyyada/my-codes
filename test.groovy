@@ -25,27 +25,5 @@ pipeline {
         }
 
     }
-        post {
-        always {
-            script {
-                  // Retrieve stage results
-                def stageResults = currentBuild.rawBuild.getActions(hudson.model.ResultAction)
-                
-                stageResults.each { stageResult ->
-                    def stageName = stageResult.getDescriptor().getDisplayName()
-                    def stageResultValue = stageResult.getResult().toString()
-
-                    if (stageResultValue == 'SUCCESS') {
-                        echo "Stage ${stageName} result: Success"
-                    } else {
-                        echo "Stage ${stageName} result: Failure"
-                    }
-                }
-                }
-            }
-        }
-    }
-    
-    // Additional pipeline configuration
-    // ...
+}
 
