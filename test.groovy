@@ -19,7 +19,7 @@ pipeline {
         stage('stage 3'){
             steps{
                 script{
-                prln("stage 3")
+                println("stage 3")
                 }
             }
         }
