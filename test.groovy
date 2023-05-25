@@ -9,6 +9,11 @@ pipeline {
                 }
             }
         }
+        stage('stage 2'){
+            steps{
+                println("stage 2")
+            }
+        }
 
     }
         post {
