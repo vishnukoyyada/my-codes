@@ -2,10 +2,10 @@ pipeline {
     agent any
     
     stages {
-        stage('Print Hello World') {
+        stage('stage 1') {
             steps {
                 script {
-                    println("Hello, World!")
+                    println("stage 1")
                 }
             }
         }
@@ -16,16 +16,27 @@ pipeline {
                 }
             }
         }
+        stage('stage 3'){
+            steps{
+                script{
+                prln("stage 3")
+                }
+            }
+        }
 
     }
         post {
         always {
             script {
-                def stageResult = currentBuild.result
-                if (stageResult == 'SUCCESS') {
-                    echo "Stage result: Success"
-                } else {
-                    echo "Stage result: Failure"
+                 for (stage in pipelineStages) {
+                    def stageName = stage.name
+                    def stageResult = stage.result ?: 'UNKNOWN'
+
+                    if (stageResult == 'SUCCESS') {
+                        echo "Stage ${stageName} result: Success"
+                    } else {
+                        echo "Stage ${stageName} result: Failure"
+                    }
                 }
             }
         }
