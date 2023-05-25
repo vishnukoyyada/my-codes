@@ -28,15 +28,19 @@ pipeline {
         post {
         always {
             script {
-                 for (stage in pipelineStages) {
-                    def stageName = stage.name
-                    def stageResult = stage.result ?: 'UNKNOWN'
+                  // Retrieve stage results
+                def stageResults = currentBuild.rawBuild.getActions(hudson.model.ResultAction)
+                
+                stageResults.each { stageResult ->
+                    def stageName = stageResult.getDescriptor().getDisplayName()
+                    def stageResultValue = stageResult.getResult().toString()
 
-                    if (stageResult == 'SUCCESS') {
+                    if (stageResultValue == 'SUCCESS') {
                         echo "Stage ${stageName} result: Success"
                     } else {
                         echo "Stage ${stageName} result: Failure"
                     }
+                }
                 }
             }
         }
